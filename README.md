@@ -1,4 +1,4 @@
-Index Merger
+Lucene Index Merger
 ========
 
 ## Purpose
