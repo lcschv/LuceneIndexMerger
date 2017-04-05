@@ -13,6 +13,7 @@ mvn package appassembler:assemble
 ```
 To execute the merger you may use the follow command:
 ```
-sh target/appassembler/bin/Main PathOfDirContainingIndexes PathToStoreMergedIndexes
+sh target/appassembler/bin/Main Path/dir/Indexes Path/to/store/mergedIndex
 
 ```
+The `PathOfDirContainingIndexes` must contain the all directories of each index that you're willing to merge.  `PathOfDirContainingIndexes` is the directory that your merged index will be.  
