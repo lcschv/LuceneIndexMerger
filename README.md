@@ -1,2 +1,18 @@
-# LuceneIndexMerger
-This toolkit will be abble to merge two (or more) index into one using java built on Lucene.
+Index Merger
+========
+
+## Purpose
+
+Index Merger is designed to support merging multiple indexes into one single index. We mainly used it to merge ClueWeb12 index.
+
+
+Build using Maven:
+
+```
+mvn package appassembler:assemble
+```
+To execute the merger you may use the follow command:
+```
+sh target/appassembler/bin/Main PATHOFINDEXES PATHTOMERGEINDEX
+
+```
