@@ -4,14 +4,10 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.index.ConcurrentMergeScheduler;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
@@ -25,7 +21,6 @@ public class IndexMerger {
 	
 	private final Path mergedIndexesPath;
 	private File INDEXES_DIR;
-	private Directory MERGEDINDEX_DIR;
 	private IndexWriter writer;
 	private Directory indexes [];
 	
@@ -47,7 +42,6 @@ public class IndexMerger {
 			      Files.createDirectories(this.mergedIndexesPath);
 			    }
 			final Directory MERGEDINDEX_DIR = FSDirectory.open(this.mergedIndexesPath);
-			final EnglishAnalyzer analyzer = new EnglishAnalyzer();
 			final IndexWriterConfig config = new IndexWriterConfig(new EnglishAnalyzer());
 			
 			//Configuring IndexWriterConfig
@@ -71,7 +65,7 @@ public class IndexMerger {
 			    return new File(current, name).isDirectory();
 			  }
 			});
-		System.out.println(Arrays.toString(directories));
+		System.out.println("Listing all the indexes found: "+Arrays.toString(directories));
 		for (int i = 0; i < directories.length; i++) {
 			System.out.println("Adding:" + INDEXES_DIR +"/"+ directories[i]);
 			try {
@@ -84,14 +78,14 @@ public class IndexMerger {
 	}
 	
 	public void MergeIndex(){
-		System.out.println("Merging indexses ...");
+		System.out.println("Merging indexes ..");
 		try {
 			writer.addIndexes(indexes);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.print("Optimizing index...");
+		System.out.print("Optimizing index ..");
 		try {
 			writer.forceMerge(1);
 		} catch (IOException e) {
@@ -104,7 +98,7 @@ public class IndexMerger {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("done");
+		System.out.println("Merge complete.");
 	}
 	
 }
