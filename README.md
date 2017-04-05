@@ -13,6 +13,6 @@ mvn package appassembler:assemble
 ```
 To execute the merger you may use the follow command:
 ```
-sh target/appassembler/bin/Main PATHOFINDEXES PATHTOMERGEINDEX
+sh target/appassembler/bin/Main PathOfDirContainingIndexes PathToStoreMergedIndexes
 
 ```
