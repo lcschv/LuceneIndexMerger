@@ -5,7 +5,7 @@ Index Merger
 
 Index Merger is designed to support merging multiple indexes into one single index. We mainly used it to merge ClueWeb12 index.
 
-
+## How to use
 Build using Maven:
 
 ```
